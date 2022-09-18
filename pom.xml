@@ -19,7 +19,7 @@
 	</properties>
 	<dependencies>
 
-		<dependency>
+		<!-- dependency>
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-neo4j</artifactId>
 		    <version>6.3.2</version>
@@ -28,7 +28,7 @@
 		    <groupId>org.neo4j.driver</groupId>
 		    <artifactId>neo4j-java-driver-spring-boot-autoconfigure</artifactId>
 		    <version>4.3.6.0</version>
-		</dependency>
+		</dependency -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -58,10 +58,10 @@
 			<artifactId>primefaces</artifactId>
 			<version>8.0</version>
 		</dependency>
-		<dependency>
+		<!-- dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-neo4j</artifactId>
-		</dependency>
+		</dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
