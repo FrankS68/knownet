@@ -16,4 +16,13 @@ public class KnowledgeController {
 	    return mav;
 	}
 
+	@RequestMapping("/service/*")
+	public ModelAndView getService() {
+	    ModelAndView mav = new ModelAndView();
+	    mav.setViewName("serviceTable");
+
+	    System.out.println(System.getProperties());
+	    return mav;
+	}
+
 }

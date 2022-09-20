@@ -21,8 +21,18 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
  
     @Override
     public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString("mongodb+srv://fse418:zimt706zicke@cluster0.crvlg4r.mongodb.net/test"
-        		+ "");
+    	String 
+    	// mongoUser = "fse418";
+    	mongoUser = System.getenv("mongoUser");
+		String // mongoPwd = "zimt706zicke";
+		mongoPwd = System.getenv("mongoPwd");
+		String mongoServer = "cluster0.crvlg4r.mongodb.net";
+		String mongoDb = "test";
+		return mongoClient(mongoUser,mongoPwd,mongoServer,mongoDb);
+    }
+    
+    public MongoClient mongoClient(String mongoUser,String mongoPwd,String mongoServer,String mongoDb) {
+        ConnectionString connectionString = new ConnectionString(String.format("mongodb+srv://%s:%s@%s/%s",mongoUser,mongoPwd,mongoServer,mongoDb));
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
             .applyConnectionString(connectionString)
             .build();
