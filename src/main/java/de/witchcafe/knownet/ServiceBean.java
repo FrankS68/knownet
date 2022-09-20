@@ -13,7 +13,7 @@ public class ServiceBean {
 		return "environments";
 	}
 
-	public Collection<ServiceEntry> getEntries(){
+	public Collection<SimpleServiceEntry> getEntries(){
 		// return service.getEntries();
 		service = new Service();
 		service.add(new HashMap<String,Object>() {{

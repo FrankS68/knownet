@@ -3,6 +3,7 @@ package de.witchcafe.knownet;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 
@@ -11,9 +12,14 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
+import de.witchcafe.base.StatusController;
+import de.witchcafe.base.StatusController.Status;
+
 @Configuration
 public class MongoConfig extends AbstractMongoClientConfiguration {
- 
+	@Autowired
+	StatusController statusController; 
+	
     @Override
     protected String getDatabaseName() {
         return "test";
@@ -27,7 +33,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 		String // mongoPwd = "zimt706zicke";
 		mongoPwd = System.getenv("mongoPwd");
 		String mongoServer = "cluster0.crvlg4r.mongodb.net";
-		String mongoDb = "test";
+		String mongoDb = "testy";
 		return mongoClient(mongoUser,mongoPwd,mongoServer,mongoDb);
     }
     
@@ -36,8 +42,22 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
             .applyConnectionString(connectionString)
             .build();
-        
-        return MongoClients.create(mongoClientSettings);
+        MongoClient client = null;
+        try {
+        	client = MongoClients.create(mongoClientSettings);
+        	statusController.log(
+        			getClass().getCanonicalName(), 
+        			Status.error, 
+        			String.format("created mongo client for server %s opening database %s",mongoServer,mongoDb));
+        }
+        catch (Exception exc) {
+        	statusController.log(
+        			getClass().getCanonicalName(), 
+        			Status.error, 
+        			String.format("error %s when connecting to server %s opening database %s",exc.getMessage(), mongoServer,mongoDb));
+        	throw exc;
+        }
+		return client;
     }
  
     @Override

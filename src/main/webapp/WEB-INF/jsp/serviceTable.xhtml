@@ -13,9 +13,9 @@
 
 <h:form id="form"> 
 	<ui:include src="menu.xhtml"/>
-    <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
- 
-<p:dataTable var="entry" value="#{serviceBean.entries}">
+		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+		<p:dataTable var="entry" value="#{serviceBean.entries}">
     <f:facet name="header">
         List of #{serviceBean.type}
     </f:facet>
