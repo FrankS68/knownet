@@ -12,7 +12,14 @@ public class KnowledgeController {
 	    ModelAndView mav = new ModelAndView();
 	    mav.setViewName("index");
 
-	    System.out.println(System.getProperties());
+	    return mav;
+	}
+
+	@RequestMapping("/status")
+	public ModelAndView getStatus() {
+	    ModelAndView mav = new ModelAndView();
+	    mav.setViewName("status");
+
 	    return mav;
 	}
 
@@ -21,7 +28,6 @@ public class KnowledgeController {
 	    ModelAndView mav = new ModelAndView();
 	    mav.setViewName("serviceTable");
 
-	    System.out.println(System.getProperties());
 	    return mav;
 	}
 
