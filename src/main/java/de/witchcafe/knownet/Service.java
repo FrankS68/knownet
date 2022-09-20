@@ -11,7 +11,7 @@ public class Service extends HashMap<String,ServiceEntry> {
 	}
 	
 	public void add(HashMap<String,Object> entryMap) {
-		SimpleServiceEntry entry = new SimpleServiceEntry((String)entryMap.get("is"), (String)entryMap.get("name"));
+		SimpleServiceEntry entry = new SimpleServiceEntry((String)entryMap.get("id"), (String)entryMap.get("name"));
 		put((String)entry.getId(),entry);
 	}
 }
