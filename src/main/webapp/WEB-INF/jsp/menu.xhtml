@@ -30,9 +30,9 @@
 
 			<p:column>
 				<p:submenu label="System">
-					<p:menuitem value="default Service"
-						icon="/resources/demo/images/dock/video.png" url="/service/*" />
-					<p:menuitem value="Status"
+					<p:menuitem value="#{serviceBean.pageTitle}"
+						icon="/resources/demo/images/dock/video.png" url="/services" />
+					<p:menuitem value="#{statusController.pageTitle}"
 						icon="/resources/demo/images/dock/video.png" url="/status" />
 				</p:submenu>
 			</p:column>

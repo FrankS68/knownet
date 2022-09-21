@@ -7,7 +7,9 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<h:head></h:head>
+<h:head>
+	<title>#{statusController.pageTitle}</title>
+</h:head>
 <h:body>
 
 	<h:form>
@@ -16,7 +18,7 @@
 
 		<p:dataTable var="entry" value="#{statusController.logs}">
 			<f:facet name="header">
-        List of #{serviceBean.type}
+        List of serviceBean.type
     </f:facet>
 			<p:column headerText="Year" footerText="1960-2010">
         #{entry.reported}

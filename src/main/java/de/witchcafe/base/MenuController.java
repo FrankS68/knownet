@@ -11,6 +11,11 @@ import de.witchcafe.base.StatusController.Status;
 public class MenuController{
 	@Autowired
 	StatusController statusController;
+
+	public String getPageTitle() {
+		return "Status Overview";
+	}
+
 	
 	@PostConstruct
 	public void init() {

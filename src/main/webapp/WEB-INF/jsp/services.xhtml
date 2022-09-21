@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title>#{serviceBean.pageTitle}</title>
+</h:head>
+<h:body>
+
+<h:form id="form"> 
+	<ui:include src="menu.xhtml"/>
+		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+		<p:dataTable var="service" value="#{serviceBean.services}">
+    <f:facet name="header">
+        non reasonable header
+    </f:facet>
+    <p:column>
+        <f:facet name="header">
+            Model
+        </f:facet>
+        entry.id
+        <f:facet name="footer">
+            non reasonable footer one
+        </f:facet>
+    </p:column>
+    <p:column headerText="Year" footerText="no footer text">
+        #{service.getName()}
+    </p:column>
+
+    <f:facet name="footer">
+        non reasonable footer two
+    </f:facet>
+</p:dataTable>
+    	<ui:include src="include.xhtml"/>
+    
+</h:form>
+</h:body>
+</html>

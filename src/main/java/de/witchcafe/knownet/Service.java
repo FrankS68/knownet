@@ -3,27 +3,34 @@ package de.witchcafe.knownet;
 import java.util.Collection;
 import java.util.HashMap;
 
+import de.witchcafe.base.StatusController;
+import de.witchcafe.base.StatusController.Status;
 
-public class Service extends HashMap<String,ServiceEntry> {
-	
-	private String name;
-	private String type;
-	
-	public Service (String name,String type) {
-		this.name = name;
-		this.type = type;
+
+public abstract class Service extends HashMap<String,ServiceEntry> {
+	private static StatusController statusController;		
+	public Service () {
+		statusController.log(getClass().getCanonicalName(), Status.info, "initialised");
 	}
 	
+	public static void setStatusController(StatusController sc) {
+		statusController = sc;
+	}
+		
 	public Collection getEntries(){
 		return values();
 	}
 	
 	public String getName() {
-		return name;
+		return getClass().getSimpleName();
+	}
+	
+	public String getId() {
+		return getClass().getCanonicalName();
 	}
 	
 	public String getType() {
-		return type;
+		return getClass().getSimpleName()+".Entry";
 	}
 	
 	public void add(HashMap<String,Object> entryMap) {

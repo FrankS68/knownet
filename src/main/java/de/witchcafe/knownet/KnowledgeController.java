@@ -44,4 +44,12 @@ public class KnowledgeController {
 	    return mav;
 	}
 
+	@RequestMapping("/services")
+	public ModelAndView getServices() {
+	    ModelAndView mav = new ModelAndView();
+	    mav.setViewName("services");
+
+	    return mav;
+	}
+
 }

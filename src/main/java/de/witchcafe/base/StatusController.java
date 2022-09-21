@@ -10,6 +10,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class StatusController {
 
+	public String getPageTitle() {
+		return "Status Overview";
+	}
+
 	public enum Status{
 		trace,info,warn,error,fatal
 	}
