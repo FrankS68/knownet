@@ -7,7 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
-	<title>Tactical Radar</title>
+	<title>#{serviceBean.pageTitle}</title>
 </h:head>
 <h:body>
 
@@ -15,25 +15,25 @@
 	<ui:include src="menu.xhtml"/>
 		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 
-		<p:dataTable var="entry" value="#{serviceBean.entries}">
+		<p:dataTable var="service" value="#{serviceBean.services}">
     <f:facet name="header">
-        List of #{serviceBean.type}
+        non reasonable header
     </f:facet>
     <p:column>
         <f:facet name="header">
             Model
         </f:facet>
-        #{entry.id}
+        entry.id
         <f:facet name="footer">
-            8 digit code
+            non reasonable footer one
         </f:facet>
     </p:column>
-    <p:column headerText="Year" footerText="1960-2010">
-        #{entry.name}
+    <p:column headerText="Year" footerText="no footer text">
+        #{service.getName()}
     </p:column>
 
     <f:facet name="footer">
-        In total there are entries.
+        non reasonable footer two
     </f:facet>
 </p:dataTable>
     	<ui:include src="include.xhtml"/>
