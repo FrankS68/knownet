@@ -7,7 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
-	<title>#{serviceBean.pageTitle}</title>
+	<title>#{service.pageName}</title>
 </h:head>
 <h:body>
 
@@ -15,7 +15,7 @@
 	<ui:include src="menu.xhtml"/>
 		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 
-		<p:dataTable var="service" value="#{serviceBean.services}">
+		<p:dataTable var="entry" value="#{service.getEntries()}">
     <f:facet name="header">
         non reasonable header
     </f:facet>
@@ -23,13 +23,13 @@
         <f:facet name="header">
             Model
         </f:facet>
-        entry.id
+        #{entry.get(service.getIdKey())}
         <f:facet name="footer">
             non reasonable footer one
         </f:facet>
     </p:column>
     <p:column headerText="Year" footerText="no footer text">
-        #{service.getName()}
+        #{entry.get(service.getNameKey())}
     </p:column>
 
     <f:facet name="footer">

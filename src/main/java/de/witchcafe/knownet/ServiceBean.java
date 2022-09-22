@@ -28,7 +28,7 @@ public class ServiceBean {
 		Service.setStatusController(statusController);
 		statusController.log(getClass().getCanonicalName(), Status.info, "initialised");
 		addService(new HardCodedService());
-		// addService(new PegelOnlineService());
+		addService(new PegelOnlineService());
 	}
 	
 	public void addService(Service service) {
@@ -39,6 +39,10 @@ public class ServiceBean {
 
 	public String getPageTitle() {
 		return "Service Maintenance";
+	}
+	
+	public Service getService(String id){
+		return servicesById.get(id);
 	}
 
 	public Collection<Service> getServices(){

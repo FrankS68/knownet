@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import de.witchcafe.base.StatusController;
 import de.witchcafe.base.StatusController.Status;
+import de.witchcafe.knownet.services.PegelOnlineService;
 
 @Controller
 public class KnowledgeController {
@@ -39,7 +40,8 @@ public class KnowledgeController {
 	@RequestMapping("/service/*")
 	public ModelAndView getService() {
 	    ModelAndView mav = new ModelAndView();
-	    mav.setViewName("serviceTable");
+	    mav.addObject("service", new PegelOnlineService());
+	    mav.setViewName("service");
 
 	    return mav;
 	}
