@@ -23,6 +23,15 @@ public class RestProxy extends Service {
 	private String endPoint;
 
 
+	public RestProxy(String a, String b, String c, String d, String e) {
+		setId(a);
+		setName(b);
+		setIdKey(c);
+		setNameKey(d);
+		setEndPoint(e);
+		loadData();
+	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
