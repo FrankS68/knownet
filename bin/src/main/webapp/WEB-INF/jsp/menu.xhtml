@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+	xmlns:c="http://java.sun.com/jstl/core">
+<h:form>
+    <c:if test="#{scanController.observationsFilter.isValid}">
+		<p:sidebar widgetVar="sidebarEast" position="right" baseZIndex="10000">
+			<ui:include src="filterEditor.xhtml" />
+		</p:sidebar>
+		<p:sidebar widgetVar="sidebarEastDev" position="right" baseZIndex="10000">
+			<ui:include src="filterEditorDev.xhtml" />
+		</p:sidebar>
+    </c:if>
+    <p:megaMenu orientation="#{megaMenuView.orientation}"
+		style="margin-top:20px">
+		<p:submenu label="Main" icon="pi pi-check">
+			<p:column>
+				<p:submenu label="Functions">
+					<p:menuitem value="Home"
+						icon="/resources/demo/images/dock/home.png" url="/" />
+					<c:if test="#{scanController.observationsFilter.isValid}">
+						<p:menuitem value="Filter" icon="pi pi-arrow-right"
+							oncomplete="PF('sidebarEast').show()" />
+						<p:menuitem value="Filter(dev)" icon="pi pi-arrow-right"
+							oncomplete="PF('sidebarEastDev').show()" />
+				    </c:if>
+				</p:submenu>
+			</p:column>
+
+			<p:column>
+				<p:submenu label="System">
+					<p:menuitem value="#{serviceBean.pageTitle}"
+						icon="/resources/demo/images/dock/video.png" url="/services" />
+					<p:menuitem value="#{statusController.pageTitle}"
+						icon="/resources/demo/images/dock/video.png" url="/status" />
+				</p:submenu>
+			</p:column>
+		</p:submenu>
+
+		<p:submenu label="Tracks" icon="pi pi-file">
+
+			<p:column>
+				<p:submenu label="Clubs">
+					<p:menuitem value="TRYC"
+						icon="/resources/demo/images/dock/video.png" url="/scans/tryc" />
+					<p:menuitem value="FIYC"
+						icon="/resources/demo/images/dock/video.png" url="/scans/fiyc" />
+					<p:menuitem value="NYC"
+						icon="/resources/demo/images/dock/video.png" url="/scans/nyc" />
+					<p:menuitem value="YCBP"
+						icon="/resources/demo/images/dock/video.png" url="/scans/ycbp" />
+					<p:menuitem value="North Sea"
+						icon="/resources/demo/images/dock/video.png" url="/scans/northsea" />
+				</p:submenu>
+			</p:column>
+			<p:column>
+				<p:submenu label="Strunx?">
+					<p:menuitem value="Maps"
+						icon="/resources/demo/images/dock/music.png" url="/maps" />
+					<p:menuitem value="One"
+						icon="/resources/demo/images/dock/video.png" url="#" />
+					<p:menuitem value="Two"
+						icon="/resources/demo/images/dock/email.png" url="#" />
+					<p:menuitem value="Scans"
+						icon="/resources/demo/images/dock/video.png" url="/scans" />
+					<p:menuitem value="Basic"
+						icon="/resources/demo/images/dock/portfolio.png" url="/basic" />
+				</p:submenu>
+			</p:column>
+		</p:submenu>
+		<p:submenu label="System" icon="pi pi-file">
+			<p:column>
+		<p:submenu label="s" icon="pi pi-file">
+				<p:menuitem value="Radar"
+					icon="/resources/demo/images/dock/video.png" url="/status" />
+				<p:menuitem value="Mongo"
+					icon="/resources/demo/images/dock/video.png" url="/mongo/status" />
+				<p:menuitem value="Mongo Collection"
+					icon="/resources/demo/images/dock/video.png" url="/mongo/editor/test" />
+		</p:submenu>
+			</p:column>
+		</p:submenu>
+
+	</p:megaMenu>
+</h:form>
+</html>
